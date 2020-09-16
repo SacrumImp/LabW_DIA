@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class geometricalFigure(ABC):
+class GeometricalFigure(ABC):
 
     @abstractmethod
     def findSquare(self):
