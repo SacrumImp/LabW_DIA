@@ -10,6 +10,12 @@ def isNumber(str):
     except ValueError:
         return False
 
+def printRoots(roots):
+    if len(roots) > 0:
+        print("\033[33m Корни уравнения: {}".format(roots))
+    else:
+        print("\033[33m Уравнение не имеет корней!")
+
 coefficients = {}
 
 # считывание коэффициентов для уравнения
@@ -35,13 +41,14 @@ discriminant = coefficients.get('B') ** 2 - 4 * coefficients.get('A') * coeffici
 if coefficients.get('A') == 0 and coefficients.get('B') == 0 and coefficients.get('C') == 0:
     print("\033[33m Уравнение имеет бесконечное количество корней!")
 elif coefficients.get('A') == 0 and coefficients.get('B') == 0:
-    print("\033[33m У уравнения нет корней!")
+    printRoots(roots)
 elif coefficients.get('A') == 0:
     squareRoots = -coefficients.get('C') / coefficients.get('B')
     if squareRoots >= 0:
         roots.append(math.sqrt(squareRoots))
         if squareRoots != 0:
             roots.append(-math.sqrt(squareRoots))
+    printRoots(roots)
 else:
     if discriminant >= 0:
         squareRoots = (-coefficients.get('B') - math.sqrt(discriminant)) / (2 * coefficients.get('A'))
@@ -55,3 +62,4 @@ else:
                 roots.append(math.sqrt(squareRoots))
                 if squareRoots != 0:
                     roots.append(-math.sqrt(squareRoots))
+    printRoots(roots)
