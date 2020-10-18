@@ -1,8 +1,8 @@
 from colorama import Fore, Style
 
 def print_result(funcForDecorator):
-    def decoratedFunc():
-        result = funcForDecorator()
+    def decoratedFunc(*args):
+        result = funcForDecorator(*args)
         print(funcForDecorator.__name__)
         if type(result) == list:
             for i in result:

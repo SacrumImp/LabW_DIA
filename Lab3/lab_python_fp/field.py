@@ -9,7 +9,7 @@ def generatorFunctionField(dictionaryList, *fields):
                 newDictionary.pop(key)
         if newDictionary != {}: 
             if len(fields) == 1:
-                yield set(newDictionary.values())
+                yield list(newDictionary.values())[0]
             else:
                 yield newDictionary
 
