@@ -1,6 +1,6 @@
-/Lab1/.vscode
 
-/Lab2/.vscode
-/Lab2/.venv
-
+/*/.vscode
+/*/.venv
 .DS_Store
+
+/Lab3/test_module.py
