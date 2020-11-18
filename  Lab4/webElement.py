@@ -103,18 +103,9 @@ class WebElement():
         for i, j in self.parts.items():
             print("{} = {}".format(i, j))
 
-
 #Класс директора
 class WebDirector():
-    def __init__(self):
-        self._builder = None
-
-    @property
-    def builder(self):
-        return self._builder
-
-    @builder.setter
-    def builder(self, builder: WebElementBuilder):
+    def __init__(self, builder: WebElementBuilder):
         self._builder = builder
     
     def make_label(self):
@@ -142,12 +133,10 @@ class WebDirector():
         self._builder.introduce_connectivity("previousElem")
         self._builder.introduce_visibility(True)
 
-
 if __name__ == "__main__":
 
-    director = WebDirector()
     builder = ConcreteWebElementBuilder()
-    director.builder = builder
+    director = WebDirector(builder)
 
     director.make_label()
     builder.product.list_parts()
