@@ -1,6 +1,12 @@
 from abc import ABC, abstractmethod, abstractproperty
 
 
+#Класс посредника
+class Mediator(ABC):
+    def notify(self, sender: object, event: str) -> None:
+        pass
+
+
 #Абстрактный класс строителя
 class WebElementBuilder(ABC):
     
@@ -48,6 +54,7 @@ class ConcreteWebElementBuilder(WebElementBuilder):
 
     def reset(self):
         self._product = WebElement()
+        self._mediator = None
 
     @property
     def product(self):
@@ -71,8 +78,8 @@ class ConcreteWebElementBuilder(WebElementBuilder):
         self._product.add("connectivity", True)
         self._product.add("mainElement", value)
     
-    def introduce_action(self, value):
-        self._product.add("action", value)
+    def introduce_action(self, name, value):
+        self._product.add("action", (name, value))
 
     def introduce_link(self, value):
         self._product.add("link", value)
@@ -95,62 +102,46 @@ class WebElement():
     def nameOfElement(self, nameOfElement):
         self._name = nameOfElement
 
+    @property
+    def mediator(self) -> Mediator:
+        return self._mediator
+
+    @mediator.setter
+    def mediator(self, mediator: Mediator):
+        self._mediator = mediator
+
+    @nameOfElement.getter
+    def nameOfElement(self):
+        return self._name
+
     def add(self, partName, partValue):
         self.parts.update({partName: partValue})
 
-    def list_parts(self):
+    def printParts(self):
         print("\033[33m\n {} \n\033[37m".format(self._name))
         for i, j in self.parts.items():
             print("{} = {}".format(i, j))
 
-#Класс директора
-class WebDirector():
-    def __init__(self, builder: WebElementBuilder):
-        self._builder = builder
+    def makeAction(self):
+        self._mediator.notify(self, self.parts["action"][0])
+        func = self.parts["action"][1]
+        func()
+
+
+#Конкретная реализация посредника
+class ConcreateMediator(Mediator):
+    def __init__(self, webElement1: WebElement, webElement2: WebElement):
+        self._webElement1 = webElement1
+        self._webElement1.mediator = self
+        self._webElement2 = webElement2
+        self._webElement2.mediator = self
     
-    def make_label(self):
-        self._builder.setName("<label>")
-        self._builder.introduce_text("I am <label>")
-        self._builder.introduce_visibility(True)
-    
-    def make_button(self):
-        self._builder.setName("<button>")
-        self._builder.introduce_height(30)
-        self._builder.introduce_width(120)
-        self._builder.introduce_visibility(True)
-        self._builder.introduce_text("I am <button>")
-        self._builder.introduce_action("sampleOfFunc()")
-    
-    def make_link(self):
-        self._builder.setName("<a>")
-        self._builder.introduce_text("I am <a>")
-        self._builder.introduce_visibility(True)
-        self._builder.introduce_link("https://smth.com")
-
-    def make_radioButton(self):
-        self._builder.setName("<radio>")
-        self._builder.introduce_text("I am <radio>")
-        self._builder.introduce_connectivity("previousElem")
-        self._builder.introduce_visibility(True)
-
-if __name__ == "__main__":
-
-    builder = ConcreteWebElementBuilder()
-    director = WebDirector(builder)
-
-    director.make_label()
-    builder.product.list_parts()
-
-    director.make_button()
-    builder.product.list_parts()
-
-    director.make_link()
-    builder.product.list_parts()
-
-    director.make_radioButton()
-    builder.product.list_parts()
-
-
+    def notify(self, sender: object, event: str):
+        if (event == "clicked") and (sender.nameOfElement == "<button>"):
+            print("\033[35m\nНажата кнопка, запрошено обновление label\033[37m\n")
+            self._webElement2.makeAction()
+        elif (event == "updated") and (sender.nameOfElement == "<label>"):
+            print("\033[35m\nПосле нажатия кнопки label был обновлен\033[37m\n")
 
 
     
