@@ -16,8 +16,8 @@ if __name__ == "__main__":
 
     director.make_link()
     link = builder.product.printParts()
-    assert link == {'text': 'I am <a>', 'visibility': True, 'link': 'https://smth.com'}, "Неправильно создан элемент label"
+    assert link == {'text': 'I am <a>', 'visibility': True, 'link': 'https://smth.com'}, "Неправильно создан элемент link"
 
     director.make_radioButton()
     radioButton = builder.product.printParts()
-    assert radioButton == {'text': 'I am <radio>', 'connectivity': True, 'mainElement': 'previousElem', 'visibility': True}, "Неправильно создан элемент label"
+    assert radioButton == {'text': 'I am <radio>', 'connectivity': True, 'mainElement': 'previousElem', 'visibility': True}, "Неправильно создан элемент radioButton"
