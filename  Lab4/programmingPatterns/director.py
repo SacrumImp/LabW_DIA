@@ -1,4 +1,4 @@
-from webElement import WebElementBuilder, ConcreteWebElementBuilder
+from programmingPatterns.webElement import WebElementBuilder, ConcreteWebElementBuilder
 
 #Класс директора
 class WebDirector():
@@ -36,20 +36,3 @@ def labelUpdate():
 
 def buttonClick():
     print("\n\033[33mДополнительная логика кнопки\033[33m\n")
-
-if __name__ == "__main__":
-
-    builder = ConcreteWebElementBuilder()
-    director = WebDirector(builder)
-
-    director.make_label()
-    builder.product.printParts()
-
-    director.make_button()
-    builder.product.printParts()
-
-    director.make_link()
-    builder.product.printParts()
-
-    director.make_radioButton()
-    builder.product.printParts()

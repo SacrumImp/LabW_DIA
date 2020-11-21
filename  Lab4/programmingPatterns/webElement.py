@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod, abstractproperty
 
 
-#Класс посредника
+#Абстрактный класс посредника
 class Mediator(ABC):
     def notify(self, sender: object, event: str) -> None:
         pass
@@ -121,6 +121,7 @@ class WebElement():
         print("\033[33m\n {} \n\033[37m".format(self._name))
         for i, j in self.parts.items():
             print("{} = {}".format(i, j))
+        return self.parts
 
     def makeAction(self):
         self._mediator.notify(self, self.parts["action"][0])

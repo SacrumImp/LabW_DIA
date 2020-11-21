@@ -1,6 +1,6 @@
 from abc import ABC
-from webElement import ConcreateMediator, ConcreteWebElementBuilder
-from director import WebDirector
+from programmingPatterns.webElement import ConcreateMediator, ConcreteWebElementBuilder
+from programmingPatterns.director import WebDirector
 
 if __name__ == "__main__":
     builder = ConcreteWebElementBuilder()
