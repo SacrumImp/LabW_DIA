@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Лабораторная работа №6</title>
+        <meta charset="UTF-8">
+        <link rel='stylesheet' href='style.css'>
+    </head>
+
+    <body class="bod">
+        <div class="head">
+            <p>&lt;title&gt;<a class="title"> Форма ради формы </a>&lt;/title&gt;</p>
+        </div>
+
+        <hr class="line" size=1px color=#000000;></hr>
+
+        <form class="tableform">
+            <fieldset>
+                <div class = "item">
+                    <h1>Регистрация</h1>
+                </div>
+
+                <div class = "item">
+                    <h2>Фамилия <span class="star">*</span></h2>
+                    <input name = "sur" type="text" size="45" class="texts">
+                </div>
+
+                <div class = "item">
+                    <h2>Имя <span class="star">*</span></h2>
+                    <input name = "name" type="text" size="45" class="texts">
+                </div>
+
+                <div class = "item">
+                    <h2>Родители <span class="star">*</span></h2>
+                    <textarea rows="2" cols="40" name="parents">
+                        
+                    </textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class = "item">
+                    <h2>Золотая медаль:</h2>
+                    <input name="gold_medal" type="checkbox" name="Золотая медаль">
+                </div>
+
+                <div class = "item">
+                    <h2>Образование <span class="star">*</span></h2>
+                    <input name="education" type="radio" size="45">
+                    <label for="role_stud" class = "role">Среднее</label>
+                </div>
+
+                <div class="item">
+                    <h2></h2>
+                    <input name="education" type="radio" size="45">
+                    <label class = "role" for="role_prep">Высшее</label>
+                </div>
+
+                <div class = "item">
+                    <h2>Унверситет <span class="star">*</span></h2>
+                    <select size="3" name="universirty">
+                        <option selected value="P1">МГУ</option>
+                        <option selected value="P2">МГТУ</option>
+                        <option selected value="P2">СпбГУ</option>
+                        <option selected value="P2">МФТИ</option>
+                    </select>
+                </div>
+
+                <div class="item">
+                    <h2>Факультет <span class="star">*</span></h2>
+                    <select size="1" name="faculty">
+                        <option value="P1">ИУ</option>
+                        <option value="P2">БМТ</option>
+                        <option selected value="P3">СМ</option>
+                    </select>
+                </div>
+
+                <div class="item">
+                    <h2>Степень</h2>
+                    <input type="text" name="degree" list="datalist" size=40 maxlength=40 />
+                    <datalist id="datalist">
+                        <option value="Специалитет">Специалитет</option>
+                        <option value="Бакалавриат">Бакалавриат</option>
+                        <option selected value="Магистратура">Магистратура</option>
+                    </datalist>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <input type="submit" class="buttons" value="Отправить">
+                <button class="buttons" type="reset" name="reset" value="Очистить">
+                    <img src="image.png" />
+                </button>
+            </fieldset>
+
+        </form>
+    </body>
+
+</html>
