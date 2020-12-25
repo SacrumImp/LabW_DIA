@@ -1,0 +1,57 @@
+body {
+    background-color: lightblue;
+}
+
+h1,h2 {
+    color: green; 
+    text-align: center;
+    font-style: italic;
+}
+
+h3{
+    color: green; 
+    text-align: center;
+}
+
+#lands{
+    color: green;
+}
+
+#sees{
+    color: blue;
+}
+
+#mountains{
+    color: grey;
+}
+
+table{
+    text-align: center;
+    border-radius: 5px;
+}
+
+table.mountains{
+    background-color: #939597;
+}
+
+table.sees{
+    background-color: blue;
+}
+
+table.lands{
+    background-color: green;
+}
+
+th{
+    color: wheat;
+    padding: 5px;
+}
+
+.infofref{
+    margin-left: 15%;
+    margin-right: 20%;
+}
+
+.footer {
+    display: inline;
+}
