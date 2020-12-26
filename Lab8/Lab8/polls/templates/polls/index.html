@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Лабораторная работа №8</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body style="background-color: #939597;">
+        <h1 style="text-align: center; color: #F5DF4D;">Список стран</h1>
+        {% if countries_list %}
+            <ol type="I" style="margin-left: 46%; font-size: 14pt;">
+            {% for country in countries_list %}
+                <li><a href="/master/{{ country.id }}/">{{ country.name }}</a></li>
+            {% endfor %}
+            </ol>  
+        {% else %}
+             <p>No polls are available.</p>
+        {% endif %}
+    </body>
+
+</html>

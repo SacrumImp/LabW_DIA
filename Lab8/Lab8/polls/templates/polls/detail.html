@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Лабораторная работа №8 (детальная информация)</title>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    </head>
+
+    <body style="background-color: #939597;">
+        <h2 style="text-align: center; color: #F5DF4D; margin: 1%;">Детальная информация по стране</h2>
+        {% if certain_country %}
+            <div style="padding-right: 15%; padding-left: 15%;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Флаг</th>
+                        <th scope="col">Название страны</th>
+                        <th scope="col">Площадь км2</th>
+                        <th scope="col">Население</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{ certain_country.id }}</th>
+                        <td>
+                            {% load static %}
+                            <img width="30" height="20" src="{% static certain_country.image %}" alt="flag">
+                        </td>
+                        <td>{{ certain_country.name }}</td>
+                        <td>{{ certain_country.area }}</td>
+                        <td>{{ certain_country.population }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p style="color: #F5DF4D; text-align: center; margin-top: 10%;">Нет детальной информации по стране.</p>
+       {% endif %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
+
+</html>
