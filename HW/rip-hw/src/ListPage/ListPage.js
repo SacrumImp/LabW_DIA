@@ -11,7 +11,7 @@ class ListPage extends Component{
     }
 
     callAPI(){
-        fetch("http://localhost:9000/")
+        fetch("http://ya-russkiy.tk:9000/")
         .then(res => res.text())
         .then(res => this.setState({ apiResponse: res }))
         .catch(err => err);
