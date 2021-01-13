@@ -7,12 +7,12 @@ class ListPage extends Component{
     
     constructor(props){
         super(props);
-        this.state = { apiResponse: "" };
+        this.state = { apiResponse: [] };
     }
 
     callAPI(){
         fetch("http://ya-russkiy.tk:9000/")
-        .then(res => res.text())
+        .then(res => res.json())
         .then(res => this.setState({ apiResponse: res }))
         .catch(err => err);
     }
@@ -24,7 +24,9 @@ class ListPage extends Component{
     render() {
         return(
             <body className="list-body">
-                <Card title={this.state.apiResponse}/>
+                <div className="row">
+                    {this.state.apiResponse.map(res => <Card data={res}/>)}
+                </div>
             </body>
         )
     }
