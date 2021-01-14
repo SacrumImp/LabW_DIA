@@ -34,6 +34,7 @@ class DetailPage extends Component{
         return(
             <div className="container">
                 <Button style = {{ margin: '15px', width: 'inherit' }} variant="outline-dark" href="/list">На главную</Button>
+                <Button style = {{ margin: '15px', width: 'inherit' }} variant="outline-dark" href={ "/change/" + this.state.id.substr(this.state.id.length - 1)}>Изменить</Button>
                 <Card className="textconttitle">
                     <Card.Body className="text">
                         <Card.Title>{this.state.apiText.title}</Card.Title>
