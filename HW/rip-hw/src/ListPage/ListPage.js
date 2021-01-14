@@ -1,19 +1,24 @@
 import {Component} from "react"
 import "./ListPage.css"
 
-import Card from '../components/Cards/Card'
+import NoteCard from '../components/Cards/NoteCard'
 
 class ListPage extends Component{
     
     constructor(props){
         super(props);
-        this.state = { apiResponse: [] };
+        this.state = { apiText: [], apiImage: []};
     }
 
     callAPI(){
         fetch("http://ya-russkiy.tk:9000/")
         .then(res => res.json())
-        .then(res => this.setState({ apiResponse: res }))
+        .then(res => this.setState({ apiText: res }))
+        .catch(err => err);
+
+        fetch("http://ya-russkiy.tk:9000/images")
+        .then(res => res.json())
+        .then(res => this.setState({ apiImage: res }))
         .catch(err => err);
     }
 
@@ -25,7 +30,7 @@ class ListPage extends Component{
         return(
             <body className="list-body">
                 <div className="row">
-                    {this.state.apiResponse.map(res => <Card data={res}/>)}
+                    {this.state.apiText.map(res => <NoteCard data={res} images={this.state.apiImage.filter(img => img.note === res.id)}/>)}
                 </div>
             </body>
         )
