@@ -1,6 +1,7 @@
 import './NoteCard.css'
 import Carousel from 'react-bootstrap/Carousel' 
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 function NoteCard(props) {
     return(
@@ -19,8 +20,8 @@ function NoteCard(props) {
             <Card.Body>
                 <Card.Text>{props.data.location.x + ' ' + props.data.location.y}</Card.Text>
                 <Card.Title>{props.data.title}</Card.Title>
-                <Card.Text>{props.data.info}</Card.Text>
             </Card.Body>
+            <Button style = {{ margin: '15px' }} variant="outline-dark" href={"/list/"+props.data.id}>Подробнее</Button>
         </Card>
     )
 }
