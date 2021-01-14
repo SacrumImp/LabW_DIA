@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Header from './pages/Header/Header'
 import MainPage from './pages/MainPage/MainPage'
-import ListPage from './ListPage/ListPage'
+import ListPage from './pages/ListPage/ListPage'
 import DetailPage from './pages/DetailPage/DetailPage'
 import ChangePage from './pages/ChangePage/ChangePage'
 
