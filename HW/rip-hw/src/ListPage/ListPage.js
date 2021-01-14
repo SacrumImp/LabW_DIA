@@ -11,12 +11,12 @@ class ListPage extends Component{
     }
 
     callAPI(){
-        fetch("http://ya-russkiy.tk:9000/")
+        fetch("https://ya-russkiy.tk:9000/")
         .then(res => res.json())
         .then(res => this.setState({ apiText: res }))
         .catch(err => err);
 
-        fetch("http://ya-russkiy.tk:9000/images")
+        fetch("https://ya-russkiy.tk:9000/images")
         .then(res => res.json())
         .then(res => this.setState({ apiImage: res }))
         .catch(err => err);
@@ -28,11 +28,11 @@ class ListPage extends Component{
     
     render() {
         return(
-            <body className="list-body">
+            <div className="list-body">
                 <div className="row">
                     {this.state.apiText.map(res => <NoteCard data={res} images={this.state.apiImage.filter(img => img.note === res.id)}/>)}
                 </div>
-            </body>
+            </div>
         )
     }
 }
