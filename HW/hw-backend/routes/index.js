@@ -9,4 +9,6 @@ router.get('/images', db.getImages);
 router.get('/list/:id', db.getNoteById)
 router.get('/images/:id', db.getImagesById)
 
+//router.put('/change/:id', db.updateNote)
+
 module.exports = router;

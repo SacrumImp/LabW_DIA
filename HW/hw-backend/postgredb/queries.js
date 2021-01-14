@@ -48,9 +48,27 @@ const getImagesById = (request, response) => {
   })
 }
 
+/*
+const updateNote = (request, response) => {
+  const id = parseInt(request.params.id)
+  const { title, info } = request.body
+
+  pool.query(
+    'UPDATE notes SET title = $1, info = $2 WHERE id = $3',
+    [title, info, id],
+    (error, results) => {
+    if (error) {
+        throw error
+    }
+    response.status(200).send(`User modified with ID: ${id}`)
+    }
+  )
+*/
+
 module.exports = {
     getNotes,
     getImages,
     getNoteById,
     getImagesById,
+    //updateNote,
 }
