@@ -19,6 +19,16 @@ const getNotes = (request, response) => {
     })
 }
 
+const getImages = (request, response) => {
+  pool.query('SELECT c.ID as ID, c.id_note as note, i.image as image FROM connections as c LEFT JOIN images as i ON c.id_image = i.ID' , (error,results) => {
+    if(error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
 module.exports = {
     getNotes,
+    getImages,
 }
